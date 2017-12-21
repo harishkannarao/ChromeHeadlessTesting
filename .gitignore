@@ -1,0 +1,6 @@
+# Ignore Intellij files
+.idea
+*.iml
+
+# Ignore Maven files
+target
