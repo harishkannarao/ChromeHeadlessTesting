@@ -1,0 +1,2 @@
+test:
+  baseUrl: https://localhost:${server.port}
