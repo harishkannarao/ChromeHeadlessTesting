@@ -40,14 +40,10 @@ public class WebDriverFactory {
     public DesiredCapabilities getDefaultDesiredCapabilities() {
         ChromeOptions chromeOptions = new ChromeOptions();
         List<String> arguments = new ArrayList<>();
-        Boolean chromiumDriverHeadless = Optional.ofNullable(System.getProperty("chromeHeadlessMode"))
-                .map(Boolean::parseBoolean).orElse(Boolean.FALSE);
         arguments.add("--allow-insecure-localhost");
         arguments.add("--start-maximized");
-        if (Boolean.TRUE.equals(chromiumDriverHeadless)) {
-            arguments.add("--disable-gpu");
-            arguments.add("--no-sandbox");
-        }
+        arguments.add("--disable-gpu");
+        arguments.add("--no-sandbox");
         Optional<String> chromeBinary = Optional.ofNullable(System.getProperty("chromeBinary"));
         chromeBinary.ifPresent(chromeOptions::setBinary);
         chromeOptions.addArguments(arguments);
