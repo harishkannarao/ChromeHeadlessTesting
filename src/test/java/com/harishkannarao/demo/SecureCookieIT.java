@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 public class SecureCookieIT extends AbstractBaseIT {
 
     @Test
-    public void shouldCreateAndSendSecureCookieToTheServer() throws Exception {
+    public void should_createAndSendSecureCookie_toTheServer() throws Exception {
         WebDriver webDriver = webDriverFactory.newWebDriver();
         String expectedCookieValue = "my-test-cookie";
         String viewCookiePath = "/viewCookie";
