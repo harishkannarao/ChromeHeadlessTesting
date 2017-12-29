@@ -14,7 +14,6 @@ install:
   - sudo apt-get -qq install -y maven
   - sudo apt-get -qq install -y chromium-browser
   - sudo apt-get -qq install -y chromium-chromedriver
-  - sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
   - sudo apt-get -qq install -y libxi6
   - sudo apt-get -qq install -y libgconf-2-4
   - sudo apt-get -qq install -y xvfb
@@ -29,7 +28,7 @@ before_script:
   - sudo start-stop-daemon --start --quiet --pidfile /var/run/xvfb.pid --make-pidfile --background --exec $XVFB -- $XVFB_ARGS
 
 script:
-  - mvn clean install --batch-mode -DchromeDriverBinary=/usr/bin/chromedriver -DchromeBinary=/usr/bin/chromium-browser
+  - mvn clean install --batch-mode -DchromeDriverBinary=/usr/lib/chromium-browser/chromedriver -DchromeBinary=/usr/bin/chromium-browser
 
 after_script:
   - sudo killall Xvfb
