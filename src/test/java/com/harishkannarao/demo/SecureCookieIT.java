@@ -1,8 +1,8 @@
 package com.harishkannarao.demo;
 
+import com.harishkannarao.demo.page_objects.HomePage;
+import com.harishkannarao.demo.page_objects.ViewCookiePage;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -12,19 +12,16 @@ public class SecureCookieIT extends AbstractBaseIT {
 
     @Test
     public void should_createAndSendSecureCookie_toTheServer() throws Exception {
-        WebDriver webDriver = webDriverFactory.newWebDriver();
         String expectedCookieValue = "my-test-cookie";
-        String viewCookiePath = "/viewCookie";
-        webDriver.navigate().to(testProperties.getTestBaseUrl());
-        Cookie localhostCookie = new Cookie.Builder("my-cookie", expectedCookieValue)
-                .domain("localhost")
-                .isHttpOnly(true)
-                .isSecure(true)
-                .build();
-        webDriver.manage().addCookie(localhostCookie);
-        webDriver.navigate().to(testProperties.getTestBaseUrl() + viewCookiePath);
 
-        String actualCookieValue = webDriver.findElement(By.id("cookieValue")).getText();
-        assertThat(actualCookieValue, equalTo(expectedCookieValue));
+        WebDriver webDriver = webDriverFactory.newWebDriver();
+
+        HomePage homePage = new HomePage(webDriver, testProperties);
+        homePage.navigate();
+        homePage.addMyCookieWithValue(expectedCookieValue);
+
+        ViewCookiePage viewCookiePage = new ViewCookiePage(webDriver, testProperties);
+        viewCookiePage.navigate();
+        assertThat(viewCookiePage.getCookieValue(), equalTo(expectedCookieValue));
     }
 }

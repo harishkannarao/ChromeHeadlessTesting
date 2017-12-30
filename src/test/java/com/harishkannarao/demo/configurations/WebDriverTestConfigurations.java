@@ -1,4 +1,4 @@
-package com.harishkannarao.demo;
+package com.harishkannarao.demo.configurations;
 
 import com.harishkannarao.demo.webdriver.WebDriverFactory;
 import net.lightbody.bmp.BrowserMobProxy;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @TestConfiguration
-public class IntegrationTestConfigurations {
+public class WebDriverTestConfigurations {
 
     @Autowired
     private BrowserMobProxy browserMobProxy;

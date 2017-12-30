@@ -1,5 +1,6 @@
 package com.harishkannarao.demo;
 
+import com.harishkannarao.demo.configurations.WebDriverTestConfigurations;
 import com.harishkannarao.demo.properties.TestProperties;
 import com.harishkannarao.demo.webdriver.WebDriverFactory;
 import net.lightbody.bmp.BrowserMobProxy;
@@ -18,7 +19,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @SpringBootTest(
         classes = {
                 ChromeHeadlessTestingDemoApplication.class,
-                IntegrationTestConfigurations.class
+                WebDriverTestConfigurations.class
         },
         webEnvironment = DEFINED_PORT
 )
