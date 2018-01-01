@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.junit.Assert.assertThat;
 
-public class CookieIsolationIT extends AbstractBaseIT {
+public class MultipleBrowserCookieIsolationIT extends AbstractBaseIT {
 
     @Test
     public void should_isolateCookies_betweenMultipleWebDrivers() throws Exception {

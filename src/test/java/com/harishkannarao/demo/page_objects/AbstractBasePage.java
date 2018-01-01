@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 public class AbstractBasePage {
     protected static final String MY_COOKIE = "my-cookie";
     protected static final String VIEW_COOKIE_PAGE = "/viewCookie";
+    protected static final String CUSTOM_HEADER_DISPLAY_PAGE = "/showCustomHeader";
     protected static final String COOKIE_DOMAIN = "localhost";
 
     protected final WebDriver webDriver;
@@ -34,5 +35,9 @@ public class AbstractBasePage {
 
     protected WebElement findElementById(String id) {
         return webDriver.findElement(By.id(id));
+    }
+
+    protected String getTitle() {
+        return webDriver.getTitle();
     }
 }
