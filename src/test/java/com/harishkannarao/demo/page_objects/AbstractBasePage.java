@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class AbstractBasePage {
     protected static final String MY_COOKIE = "my-cookie";
@@ -39,5 +42,10 @@ public class AbstractBasePage {
 
     protected String getTitle() {
         return webDriver.getTitle();
+    }
+
+    protected void waitForPresenceOfElementByClass(String className) {
+        WebDriverWait explicitWait = new WebDriverWait(webDriver, 10);
+        explicitWait.until(presenceOfElementLocated(By.className(className)));
     }
 }
