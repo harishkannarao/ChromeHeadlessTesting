@@ -19,4 +19,25 @@ public class AngularAppHomePage extends AbstractBasePage {
         waitForPresenceOfElementByClass("qa-page");
         assertThat(findElementById("qa-home-page-id").isEnabled(), is(true));
     }
+
+    public void setFirstOperandAs(String value) {
+        setInputById("first", value);
+    }
+
+    public void setSecondOperandAs(String value) {
+        setInputById("second", value);
+    }
+
+    public void clickAddButton() {
+        clickElementById("addBtn");
+    }
+
+    public void assertResultToBe(String expectedValue) {
+        String actualValue = getElementTextById("result");
+        assertThat(actualValue, is(expectedValue));
+    }
+
+    public void clickSubtractButton() {
+        clickElementById("subtractBtn");
+    }
 }

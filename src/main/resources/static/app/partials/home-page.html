@@ -1,2 +1,15 @@
 <span id="qa-home-page-id" class="qa-page"></span>
 <h2>Welcome to my angular app !!!</h2>
+<label>Enter first number: <input id="first" type="text" ng-model="first"></label>
+<br/>
+<label>Enter second number: <input id="second" type="text" ng-model="second"></label>
+<br/>
+Result <span id="result" ng-bind="result"></span>
+<br/>
+<button id="addBtn" ng-click="addNumbers()">
+    Add
+</button>
+<br/>
+<button id="subtractBtn" ng-click="subtractNumbers()">
+    Subtract
+</button>

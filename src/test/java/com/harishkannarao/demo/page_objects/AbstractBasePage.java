@@ -23,8 +23,14 @@ public class AbstractBasePage {
         this.testProperties = testProperties;
     }
 
-    public void navigateToUrl(String url) {
+    protected void navigateToUrl(String url) {
         webDriver.navigate().to(url);
+    }
+
+    protected void setInputById(String id, String value) {
+        WebElement element = findElementById(id);
+        element.clear();
+        element.sendKeys(value);
     }
 
     protected void addCookie(String name, String value) {
@@ -47,5 +53,13 @@ public class AbstractBasePage {
     protected void waitForPresenceOfElementByClass(String className) {
         WebDriverWait explicitWait = new WebDriverWait(webDriver, 10);
         explicitWait.until(presenceOfElementLocated(By.className(className)));
+    }
+
+    protected void clickElementById(String id) {
+        findElementById(id).click();
+    }
+
+    protected String getElementTextById(String id) {
+        return findElementById(id).getText();
     }
 }
