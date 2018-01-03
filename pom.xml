@@ -13,6 +13,7 @@
     <modules>
         <module>StaticContent</module>
         <module>SampleApplication</module>
+        <module>JavaScriptJasmineUnitTests</module>
         <module>IntegrationTests</module>
     </modules>
 
