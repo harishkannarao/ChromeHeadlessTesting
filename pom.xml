@@ -11,6 +11,7 @@
     <name>ChromeHeadlessTesting</name>
 
     <modules>
+        <module>StaticContent</module>
         <module>SampleApplication</module>
         <module>IntegrationTests</module>
     </modules>
@@ -134,6 +135,12 @@
             <dependency>
                 <groupId>com.harishkannarao.demo</groupId>
                 <artifactId>sample-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.harishkannarao.demo</groupId>
+                <artifactId>static-content</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
