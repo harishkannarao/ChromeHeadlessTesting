@@ -1,4 +1,4 @@
-package com.harishkannarao.demo.webdriver;
+package com.harishkannarao.demo.test_common.webdriver;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;

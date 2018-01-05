@@ -1,6 +1,6 @@
-package com.harishkannarao.demo.configurations;
+package com.harishkannarao.demo.test_common.configurations;
 
-import com.harishkannarao.demo.webdriver.WebDriverFactory;
+import com.harishkannarao.demo.test_common.webdriver.WebDriverFactory;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import org.openqa.selenium.Proxy;

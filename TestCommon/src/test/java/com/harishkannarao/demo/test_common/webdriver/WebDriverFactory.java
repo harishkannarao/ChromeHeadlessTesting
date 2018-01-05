@@ -1,4 +1,4 @@
-package com.harishkannarao.demo.webdriver;
+package com.harishkannarao.demo.test_common.webdriver;
 
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
