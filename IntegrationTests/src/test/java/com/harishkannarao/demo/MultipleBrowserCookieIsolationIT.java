@@ -16,7 +16,6 @@ public class MultipleBrowserCookieIsolationIT extends AbstractBaseIT {
         String expectedCookieValue = "my-test-cookie";
 
         WebDriver firstWebDriver = webDriverFactory.newWebDriver();
-        WebDriver secondWebDriver = webDriverFactory.newWebDriver();
 
         HomePage homePageOnFirstBrowser = new HomePage(firstWebDriver, testProperties);
         homePageOnFirstBrowser.navigate();
@@ -25,6 +24,8 @@ public class MultipleBrowserCookieIsolationIT extends AbstractBaseIT {
         ViewCookiePage viewCookiePageOnFirstBrowser = new ViewCookiePage(firstWebDriver, testProperties);
         viewCookiePageOnFirstBrowser.navigate();
         assertThat(viewCookiePageOnFirstBrowser.getCookieValue(), equalTo(expectedCookieValue));
+
+        WebDriver secondWebDriver = webDriverFactory.newWebDriver();
 
         ViewCookiePage viewCookiePageOnSecondBrowser = new ViewCookiePage(secondWebDriver, testProperties);
         viewCookiePageOnSecondBrowser.navigate();
