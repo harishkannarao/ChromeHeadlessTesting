@@ -33,6 +33,11 @@ public class AbstractBasePage {
         element.sendKeys(value);
     }
 
+    protected String getInputElementValueById(String id) {
+        WebElement elementById = findElementById(id);
+        return elementById.getAttribute("value");
+    }
+
     protected void addCookie(String name, String value) {
         Cookie localhostCookie = new Cookie.Builder(name, value)
                 .domain(COOKIE_DOMAIN)

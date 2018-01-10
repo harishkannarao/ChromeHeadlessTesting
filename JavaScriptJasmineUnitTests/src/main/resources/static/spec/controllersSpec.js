@@ -6,9 +6,7 @@ describe('myAngularApp controllers', function() {
     // Load our app module definition before each test.
     beforeEach(module('myAngularApp'));
 
-    // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
-    // This allows us to inject a service but then attach it to a variable
-    // with the same name as the service in order to avoid a name conflict.
+    // Load our controller before each test.
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
       ctrl = $controller('HomeCtrl', {$scope: scope});

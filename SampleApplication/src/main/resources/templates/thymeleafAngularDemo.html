@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Thymeleaf Angular Demo</title>
+    <script src="/webjars/angularjs/1.4.1/angular.min.js"></script>
+</head>
+<body>
+<div id="qa-thymeleaf-angular-page-id" ng-app="thymeleafAngularControllers" ng-controller="DemoCtrl">
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+
+         var defaultFirst = /*[[${defaultFirst}]]*/ '-1';
+         var defaultSecond = /*[[${defaultSecond}]]*/ '-1';
+
+       /*]]>*/
+    </script>
+    <script src="/js/custom/thymeleaf-angular-controllers.js"></script>
+    <label>Enter first number: <input id="first" type="text" ng-model="first"/></label>
+    <br/>
+    <label>Enter second number: <input id="second" type="text" ng-model="second"/></label>
+    <br/>
+    Result <span id="result" ng-bind="result"></span>
+    <br/>
+    <button id="addBtn" ng-click="addNumbers()">
+        Add
+    </button>
+    <br/>
+    <button id="subtractBtn" ng-click="subtractNumbers()">
+        Subtract
+    </button>
+</div>
+</body>
+</html>
