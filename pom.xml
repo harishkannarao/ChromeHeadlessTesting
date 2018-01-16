@@ -14,6 +14,7 @@
         <module>StaticContent</module>
         <module>SampleApplication</module>
         <module>TestCommon</module>
+        <module>UnitTests</module>
         <module>JavaScriptJasmineUnitTests</module>
         <module>IntegrationTests</module>
     </modules>
@@ -232,6 +233,11 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

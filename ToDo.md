@@ -4,7 +4,6 @@
 * Upgrade Spring Boot
 * Embed ChromeDriverService and BrowserMobProxy inside ChromeDriverFactory
 * Xvfb configurations
-* UnitTests
 * Gradle configurations
 
 #### Key Highlights
