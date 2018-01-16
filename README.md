@@ -21,3 +21,7 @@ This repository is to demonstrate headless testing with Chrome in headless cloud
 ### Pass chrome / chromium browser and chromedriver location to the build
 
     mvn clean install -DchromeDriverBinary=/usr/lib/chromium-browser/chromedriver -DchromeBinary=/usr/bin/chromium-browser
+    
+### Run tests in headless mode
+
+    mvn clean install -DchromeHeadless=true

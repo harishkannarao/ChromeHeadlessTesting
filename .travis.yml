@@ -21,14 +21,5 @@ install:
   - sudo apt-get -qq install -y imagemagick
   - sudo apt-get -qq install -y x11-apps
 
-before_script:
-  - export DISPLAY=:99
-  - XVFB="/usr/bin/Xvfb"
-  - XVFB_ARGS="-ac $DISPLAY -screen 0 1280x1024x16"
-  - sudo start-stop-daemon --start --quiet --pidfile /var/run/xvfb.pid --make-pidfile --background --exec $XVFB -- $XVFB_ARGS
-
 script:
-  - mvn clean install --batch-mode -DchromeDriverBinary=/usr/lib/chromium-browser/chromedriver -DchromeBinary=/usr/bin/chromium-browser
-
-after_script:
-  - sudo killall Xvfb
+  - mvn clean install --batch-mode -DchromeDriverBinary=/usr/lib/chromium-browser/chromedriver -DchromeBinary=/usr/bin/chromium-browser -DchromeHeadless=true
