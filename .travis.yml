@@ -9,6 +9,11 @@ jdk:
 services:
   - docker
 
+addons:
+  hosts:
+    - local.example.com
+    - local.example.org
+
 install:
   - sudo apt-get -qq update
   - sudo apt-get -qq install -y maven
