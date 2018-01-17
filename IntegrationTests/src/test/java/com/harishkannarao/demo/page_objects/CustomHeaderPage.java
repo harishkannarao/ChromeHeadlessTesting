@@ -13,7 +13,11 @@ public class CustomHeaderPage extends AbstractBasePage {
     }
 
     public void navigate() {
-        navigateToUrl(testProperties.getTestBaseUrl() + CUSTOM_HEADER_DISPLAY_PAGE);
+        navigate(testProperties.getTestBaseUrl());
+    }
+
+    public void navigate(String baseUrl) {
+        navigateToUrl(baseUrl + CUSTOM_HEADER_DISPLAY_PAGE);
     }
 
     public void assertIsOnCorrectPage() {

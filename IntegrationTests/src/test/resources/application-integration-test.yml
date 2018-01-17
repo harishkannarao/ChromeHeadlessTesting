@@ -1,2 +1,4 @@
 test:
   baseUrl: https://localhost:${server.port}
+  exampleDotComBaseUrl: https://local.example.com:${server.port}
+  exampleDotOrgBaseUrl: https://local.example.org:${server.port}

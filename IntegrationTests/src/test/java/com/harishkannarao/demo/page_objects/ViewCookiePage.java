@@ -10,7 +10,11 @@ public class ViewCookiePage extends AbstractBasePage {
     }
 
     public void navigate() {
-        navigateToUrl(testProperties.getTestBaseUrl() + VIEW_COOKIE_PAGE);
+        navigate(testProperties.getTestBaseUrl());
+    }
+
+    public void navigate(String baseUrl) {
+        navigateToUrl(baseUrl + VIEW_COOKIE_PAGE);
     }
 
     public String getCookieValue() {

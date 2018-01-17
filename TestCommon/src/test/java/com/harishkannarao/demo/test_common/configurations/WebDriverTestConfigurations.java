@@ -3,6 +3,9 @@ package com.harishkannarao.demo.test_common.configurations;
 import com.harishkannarao.demo.test_common.webdriver.WebDriverFactory;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.mitm.CertificateAndKeySource;
+import net.lightbody.bmp.mitm.KeyStoreFileCertificateSource;
+import net.lightbody.bmp.mitm.manager.ImpersonatingMitmManager;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +28,17 @@ public class WebDriverTestConfigurations {
 
     @Bean
     public BrowserMobProxy createBrowserMobProxySingleton() {
+        CertificateAndKeySource existingCertificateSource =
+                new KeyStoreFileCertificateSource("PKCS12", "/keystore.p12", "localhost", "my_keystore_password");
+
+        // configure the MitmManager to use the same KeyStore source as the application
+        ImpersonatingMitmManager mitmManager = ImpersonatingMitmManager.builder()
+                .rootCertificateSource(existingCertificateSource)
+                .trustAllServers(true)
+                .build();
+
         BrowserMobProxy browserMobProxy = new BrowserMobProxyServer();
-        browserMobProxy.setTrustAllServers(true);
+        browserMobProxy.setMitmManager(mitmManager);
         browserMobProxy.start(0);
         Runtime.getRuntime().addShutdownHook(new Thread(browserMobProxy::stop));
 

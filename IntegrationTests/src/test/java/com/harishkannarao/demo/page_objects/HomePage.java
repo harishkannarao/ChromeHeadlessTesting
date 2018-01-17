@@ -1,5 +1,6 @@
 package com.harishkannarao.demo.page_objects;
 
+import com.harishkannarao.demo.constants.CookieDomain;
 import com.harishkannarao.demo.properties.TestProperties;
 import org.openqa.selenium.WebDriver;
 
@@ -9,12 +10,18 @@ public class HomePage extends AbstractBasePage {
     }
 
     public void navigate() {
-        navigateToUrl(testProperties.getTestBaseUrl());
+        navigate(testProperties.getTestBaseUrl());
+    }
+
+    public void navigate(String baseUrl) {
+        navigateToUrl(baseUrl);
     }
 
     public void addMyCookieWithValue(String value) {
-        addCookie(MY_COOKIE, value);
+        addMyCookieWithValue(CookieDomain.LOCALHOST, value);
     }
 
-
+    public void addMyCookieWithValue(CookieDomain cookieDomain, String value) {
+        addCookie(cookieDomain, MY_COOKIE, value);
+    }
 }

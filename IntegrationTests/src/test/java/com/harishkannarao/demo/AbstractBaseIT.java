@@ -42,4 +42,8 @@ public abstract class AbstractBaseIT {
             browserMobProxy.removeAllHeaders();
         }
     };
+
+    protected boolean runNonLocalHostTests() {
+        return Boolean.parseBoolean(System.getProperty("runNonLocalHostTests", "false"));
+    }
 }
