@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeThat;
@@ -28,6 +29,9 @@ public class NonLocalHostIT extends AbstractBaseIT {
 
         HomePage homePage = new HomePage(webDriver, testProperties);
         homePage.navigate(exampleDotComBaseUrl);
+
+        assertThat("Please import the latest self signed certificate in OS and mark it as trusted", homePage.getSslErrorsFromBrowserLogs(), empty());
+
         homePage.addMyCookieWithValue(CookieDomain.EXAMPLE_DOT_COM, expectedCookieValue);
 
         ViewCookiePage viewCookiePage = new ViewCookiePage(webDriver, testProperties);
@@ -46,6 +50,7 @@ public class NonLocalHostIT extends AbstractBaseIT {
         CustomHeaderPage customHeaderPage = new CustomHeaderPage(webDriver, testProperties);
 
         customHeaderPage.navigate(exampleDotOrgBaseUrl);
+        assertThat("Please import the latest self signed certificate in OS and mark it as trusted", customHeaderPage.getSslErrorsFromBrowserLogs(), empty());
         customHeaderPage.assertIsOnCorrectPage();
         customHeaderPage.assertCustomHeaderValue(customHeaderValue);
     }

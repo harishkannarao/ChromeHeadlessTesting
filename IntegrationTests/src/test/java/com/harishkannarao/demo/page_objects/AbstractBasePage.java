@@ -6,7 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
@@ -66,5 +70,18 @@ public class AbstractBasePage {
 
     protected String getElementTextById(String id) {
         return findElementById(id).getText();
+    }
+
+    public List<String> getBrowserLogs() {
+        return webDriver.manage().logs().get("browser").getAll()
+                .stream().map(LogEntry::getMessage)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getSslErrorsFromBrowserLogs() {
+        return getBrowserLogs()
+                .stream()
+                .filter(it -> it.contains("net::ERR_INSECURE_RESPONSE"))
+                .collect(Collectors.toList());
     }
 }
