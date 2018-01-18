@@ -17,7 +17,7 @@ public class NonLocalHostIT extends AbstractBaseIT {
 
     @Before
     public void setUp() throws Exception {
-        assumeThat(runNonLocalHostTests(), equalTo(true));
+        assumeThat("Skipping this test as system property 'runNonLocalHostTests' is not set to 'true'. To run these tests, set -DrunNonLocalHostTests=true", runNonLocalHostTests(), equalTo(true));
     }
 
     @Test
