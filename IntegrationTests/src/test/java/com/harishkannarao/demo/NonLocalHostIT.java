@@ -15,6 +15,12 @@ import static org.junit.Assume.assumeThat;
 
 public class NonLocalHostIT extends AbstractBaseIT {
 
+    private static final String SSL_ERROR_MESSAGE = "The SSL certificate is not valid or not imported. "
+            + "Please ensure the following conditions are satisfied: \n"
+            + "- The certificate should contain the domain name in the Subject Alternative Name (SAN) field\n"
+            + "- The certificate should be imported as trusted certificate in the CI server using the CI build script\n"
+            + "- The certificate should be imported or re-imported as trusted certificate in development machine";
+
     @Before
     public void setUp() throws Exception {
         assumeThat("Skipping this test as system property 'runNonLocalHostTests' is not set to 'true'. To run these tests, set -DrunNonLocalHostTests=true", runNonLocalHostTests(), equalTo(true));
@@ -30,7 +36,7 @@ public class NonLocalHostIT extends AbstractBaseIT {
         HomePage homePage = new HomePage(webDriver, testProperties);
         homePage.navigate(exampleDotComBaseUrl);
 
-        assertThat("Please import the latest self signed certificate in OS and mark it as trusted", homePage.getSslErrorsFromBrowserLogs(), empty());
+        assertThat(SSL_ERROR_MESSAGE, homePage.getSslErrorsFromBrowserLogs(), empty());
 
         homePage.addMyCookieWithValue(CookieDomain.EXAMPLE_DOT_COM, expectedCookieValue);
 
@@ -50,7 +56,7 @@ public class NonLocalHostIT extends AbstractBaseIT {
         CustomHeaderPage customHeaderPage = new CustomHeaderPage(webDriver, testProperties);
 
         customHeaderPage.navigate(exampleDotOrgBaseUrl);
-        assertThat("Please import the latest self signed certificate in OS and mark it as trusted", customHeaderPage.getSslErrorsFromBrowserLogs(), empty());
+        assertThat(SSL_ERROR_MESSAGE, customHeaderPage.getSslErrorsFromBrowserLogs(), empty());
         customHeaderPage.assertIsOnCorrectPage();
         customHeaderPage.assertCustomHeaderValue(customHeaderValue);
     }
