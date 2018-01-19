@@ -1,6 +1,6 @@
 package com.harishkannarao.demo;
 
-import com.harishkannarao.demo.test_common.configurations.WebDriverTestConfigurations;
+import com.harishkannarao.demo.configuration.WebDriverTestConfigurations;
 import com.harishkannarao.demo.properties.TestProperties;
 import com.harishkannarao.demo.test_common.webdriver.WebDriverFactory;
 import net.lightbody.bmp.BrowserMobProxy;

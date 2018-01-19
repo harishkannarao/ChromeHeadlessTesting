@@ -19,11 +19,16 @@ public class WebDriverFactory {
     private static final Logger LOGGER = Logger.getLogger(WebDriverFactory.class.getName());
     private static final List<WebDriver> WEB_DRIVERS = new ArrayList<>();
 
-    private final Proxy proxy;
+    private final Optional<Proxy> optionalProxy;
     private final ChromeDriverService chromeDriverService;
 
+    public WebDriverFactory(ChromeDriverService chromeDriverService) {
+        this.optionalProxy = Optional.empty();
+        this.chromeDriverService = chromeDriverService;
+    }
+
     public WebDriverFactory(Proxy proxy, ChromeDriverService chromeDriverService) {
-        this.proxy = proxy;
+        this.optionalProxy = Optional.of(proxy);
         this.chromeDriverService = chromeDriverService;
     }
 
@@ -55,7 +60,7 @@ public class WebDriverFactory {
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 
-        capabilities.setCapability(CapabilityType.PROXY, proxy);
+        optionalProxy.ifPresent(proxy -> capabilities.setCapability(CapabilityType.PROXY, proxy));
 
         return capabilities;
     }

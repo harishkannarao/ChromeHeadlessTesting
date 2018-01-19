@@ -1,4 +1,4 @@
-package com.harishkannarao.demo.test_common.configurations;
+package com.harishkannarao.demo.configuration;
 
 import com.harishkannarao.demo.test_common.webdriver.WebDriverFactory;
 import net.lightbody.bmp.BrowserMobProxy;
