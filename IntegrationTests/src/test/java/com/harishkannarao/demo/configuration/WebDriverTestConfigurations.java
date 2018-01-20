@@ -7,22 +7,15 @@ import net.lightbody.bmp.mitm.CertificateAndKeySource;
 import net.lightbody.bmp.mitm.KeyStoreFileCertificateSource;
 import net.lightbody.bmp.mitm.manager.ImpersonatingMitmManager;
 import org.openqa.selenium.Proxy;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Optional;
 
 @TestConfiguration
 public class WebDriverTestConfigurations {
 
     @Autowired
     private BrowserMobProxy browserMobProxy;
-    @Autowired
-    private ChromeDriverService chromeDriverService;
     @Autowired
     private Proxy seleniumProxy;
 
@@ -46,25 +39,6 @@ public class WebDriverTestConfigurations {
     }
 
     @Bean
-    public ChromeDriverService createChromeDriverServiceSingleton() {
-        ChromeDriverService.Builder builder = new ChromeDriverService.Builder();
-        Optional<String> chromeDriverBinary = Optional.ofNullable(System.getProperty("chromeDriverBinary"));
-        chromeDriverBinary.ifPresent(path -> builder.usingDriverExecutable(new File(path)));
-        ChromeDriverService service = builder
-                .usingAnyFreePort()
-                .build();
-        try {
-            service.start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        Runtime.getRuntime().addShutdownHook(new Thread(service::stop));
-
-        return service;
-    }
-
-    @Bean
     public Proxy createSeleniumProxy() {
         Proxy seleniumProxy = new Proxy();
         seleniumProxy.setProxyType(Proxy.ProxyType.MANUAL);
@@ -78,6 +52,6 @@ public class WebDriverTestConfigurations {
 
     @Bean
     public WebDriverFactory createWebDriverFactorySingleton() {
-        return new WebDriverFactory(seleniumProxy, chromeDriverService);
+        return new WebDriverFactory(seleniumProxy);
     }
 }
