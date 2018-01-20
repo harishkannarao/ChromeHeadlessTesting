@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
@@ -34,8 +35,14 @@ public class WebDriverFactory {
 
     public WebDriver newWebDriver() {
         startChromeDriverService();
-        WebDriver webDriver = new ChromeDriver(chromeDriverService, getDefaultDesiredCapabilities());
+        WebDriver webDriver = createChromeWebDriver();
         WEB_DRIVERS.add(webDriver);
+        return webDriver;
+    }
+
+    private WebDriver createChromeWebDriver() {
+        WebDriver webDriver = new ChromeDriver(chromeDriverService, getDefaultDesiredCapabilities());
+        webDriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.MINUTES);
         return webDriver;
     }
 
