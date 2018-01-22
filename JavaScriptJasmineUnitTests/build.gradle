@@ -1,0 +1,25 @@
+buildscript {
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+}
+
+apply plugin: 'org.springframework.boot'
+
+bootRepackage {
+    executable = true
+    classifier = 'exec'
+}
+
+bootRun {
+    addResources = true
+}
+
+jar {
+    baseName = 'java-script-jasmine-unit-tests'
+    version =  '1.0-SNAPSHOT'
+}
+
+dependencies {
+    compile project(':StaticContent')
+
+    testCompile project(':TestCommon').sourceSets.test.output
+}

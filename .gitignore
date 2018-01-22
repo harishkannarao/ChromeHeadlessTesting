@@ -1,6 +1,11 @@
 # Ignore Intellij files
 .idea
 *.iml
+out
 
 # Ignore Maven files
 target
+
+# Ignore Gradle files
+build
+.gradle

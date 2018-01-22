@@ -22,9 +22,12 @@
     <properties>
         <java.version>1.8</java.version>
         <spring.boot.version>1.5.9.RELEASE</spring.boot.version>
-        <selenium.version>3.8.1</selenium.version>
+        <selenium.version>2.53.1</selenium.version>
         <angularjs.version>1.4.1</angularjs.version>
         <jasmine.version>2.5.1</jasmine.version>
+        <commons.io.version>2.6</commons.io.version>
+        <browser.mob.proxy.version>2.1.5</browser.mob.proxy.version>
+        <guava.version>22.0</guava.version>
     </properties>
 
     <build>
@@ -178,21 +181,21 @@
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
-                <version>2.6</version>
+                <version>${commons.io.version}</version>
                 <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>net.lightbody.bmp</groupId>
                 <artifactId>browsermob-core</artifactId>
-                <version>2.1.5</version>
+                <version>${browser.mob.proxy.version}</version>
                 <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>22.0</version>
+                <version>${guava.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

@@ -1,0 +1,8 @@
+rootProject.name = 'chrome-headless-testing'
+
+include ':StaticContent'
+include ':SampleApplication'
+include ':TestCommon'
+include ':UnitTests'
+include ':JavaScriptJasmineUnitTests'
+include ':IntegrationTests'

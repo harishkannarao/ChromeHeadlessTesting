@@ -1,0 +1,47 @@
+allprojects {
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+    }
+
+    apply plugin: 'idea'
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
+        compile("org.webjars:angularjs:${angularJsVersion}")
+        compile("org.webjars.bower:jasmine:${jasmineVersion}")
+
+        testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+        testCompile("org.seleniumhq.selenium:selenium-java:${seleniumVersion}")
+        testCompile("commons-io:commons-io:${commonsIoVersion}")
+        testCompile("net.lightbody.bmp:browsermob-core:${browserMobProxyVersion}")
+        testCompile("com.google.guava:guava:${guavaVersion}")
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            force "com.google.guava:guava:${guavaVersion}"
+        }
+    }
+
+    test {
+        systemProperties(System.getProperties())
+    }
+}
+
+
+
+
+

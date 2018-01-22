@@ -1,0 +1,23 @@
+buildscript {
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+}
+
+apply plugin: 'org.springframework.boot'
+
+bootRepackage {
+    executable = true
+    classifier = 'exec'
+}
+
+bootRun {
+    addResources = true
+}
+
+jar {
+    baseName = 'sample-application'
+    version =  '1.0-SNAPSHOT'
+}
+
+dependencies {
+    compile project(':StaticContent')
+}

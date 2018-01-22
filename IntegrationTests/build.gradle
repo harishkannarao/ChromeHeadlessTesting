@@ -1,0 +1,5 @@
+dependencies {
+    testCompile project(':SampleApplication')
+    testCompile project(':TestCommon').sourceSets.test.output
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}

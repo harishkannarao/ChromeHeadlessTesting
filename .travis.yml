@@ -33,3 +33,4 @@ before_script:
 
 script:
   - mvn clean install --batch-mode -DchromeDriverBinary=/usr/lib/chromium-browser/chromedriver -DchromeBinary=/usr/bin/chromium-browser -DchromeHeadless=true -DrunNonLocalHostTests=true
+  - ./gradlew clean build -DchromeDriverBinary=/usr/lib/chromium-browser/chromedriver -DchromeBinary=/usr/bin/chromium-browser -DchromeHeadless=true -DrunNonLocalHostTests=true
