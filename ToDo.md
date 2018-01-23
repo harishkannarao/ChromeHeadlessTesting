@@ -7,15 +7,11 @@
 
 #### Xvfb problems
 
-* Not reliable
-* Occasional crashing when running large number of tests
+* Not reliable as it is crashing occasionally when running large number of tests
 
 #### Documentation
 
-* Run full build
-* Run javascript unit tests as standalone
-* Run application as jar
-* Run the build in headless CI server
+* Screenshot location
 
 * Running non localhost ssl tests in headless mode
 
