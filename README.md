@@ -74,7 +74,7 @@ The following command executes the same stuffs as above command with Chrome / Ch
 
 
     
-## Run Java Script unit tests in standalone
+## Run Java Script unit tests as standalone
 
 To run the java script unit tests in standalone mode, start the JasmineSpec runner application using the following command
 
@@ -92,7 +92,7 @@ And open the JasmineSpec runner url in a browser
 
 
     
-## Override location of browser and chromedriver location
+## Override location or pass the path of browser and chromedriver
 
 The following command allows you to specify the installation location if the browser and / or chromedriver is not availabe in PATH of your Operating System. This is particularly convenient in CI environments
     
