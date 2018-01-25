@@ -7,8 +7,12 @@ This repository is to demonstrate headless testing with Chrome in headless cloud
 * Ability to send additional http request headers (e.g X-Forwarded-For) to server from browser using Browser Mob Proxy
 * Ability to test application on non-localhost domains (e.g local.example.com) on SSL with Self Signed certificate using headless mode
 
+## Avoiding Xvfb
+
+In lot of examples, Xvfb (Virtual Frame Buffer) was used as a solution for web driver based tests running in headless CI server. However, when running large number of tests (typically 600+) for an enterprise application, Xvfb crashed during the test run. This happened frequently, even after setting DBUS_SESSION_BUS_ADDRESS=/dev/null. As a result the build was red due to single failure and the build become flaky. After using the Chrome in native headless mode (--headless), then build became robust and never failed with occasional crash.
+
 ## Classification of headless testing
-Headless testing with chrome can be classified into following categories, based on the category, test setup needs additional web driver configurations and tools (like proxies). This demo repository contains code that covers all these categories.
+Headless testing with chrome can be classified into following categories as listed below. Based on the test category, test setup needs additional web driver configurations and tools (like proxies). This demo repository contains code that covers all these categories.
 
 #### Simple
 Testing the application on localhost on http or https (using self signed certificate)
