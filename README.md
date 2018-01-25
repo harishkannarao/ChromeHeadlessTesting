@@ -9,7 +9,7 @@ This repository is to demonstrate headless testing with Chrome in headless cloud
 
 ## Avoiding Xvfb
 
-In lot of examples, Xvfb (Virtual Frame Buffer) was used as a solution for web driver based tests running in headless CI server. However, when running large number of tests (typically 600+) for an enterprise application, Xvfb crashed during the test run. This happened frequently, even after setting DBUS_SESSION_BUS_ADDRESS=/dev/null. As a result the build was red due to single failure and the build become flaky. After using the Chrome in native headless mode (--headless), then build became robust and never failed with occasional crash.
+In lot of examples, Xvfb (Virtual Frame Buffer) was used as a solution for web driver based tests running in headless CI server. However, when running large number of tests (typically 600+) for an enterprise application, Xvfb crashed during the test run. This happened frequently, even after setting DBUS_SESSION_BUS_ADDRESS=/dev/null. As a result the build was red due to single failure and the build become flaky. After using the Chrome in native headless mode (--headless), the build became reliable and never failed for wrong reasons.
 
 ## Classification of headless testing
 Headless testing with chrome can be classified into following categories as listed below. Based on the test category, test setup needs additional web driver configurations and tools (like proxies). This demo repository contains code that covers all these categories.
