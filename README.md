@@ -45,7 +45,7 @@ This needs all of the following:
 * Apache Maven Version: 3.3.9
 * Gradle Version: 4.4.1
 * Chrome (Windows & Mac OS) Browser / Chromium (Linux OS) Browser: 62
-* chromeDriver: 2.32 (Execute: chromedriver --version)
+* chromeDriver: 2.32 [chromedriver installation steps](http://harish-kannarao.blogspot.co.uk/2018/01/installing-chromedriver-for-selenium.html)
 * Git Client: Any latest version
 * Integrated Development Environment: Any version IntelliJ Idea or Eclipse
 

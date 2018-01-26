@@ -5,10 +5,6 @@
 * Automatic capturing of screenshot on test completion
 * Import self-signed certificate to fix SSL errors
 
-#### Xvfb problems
-
-* Not reliable as it is crashing occasionally when running large number of tests
-
 #### Documentation
 
 * Screenshot location
