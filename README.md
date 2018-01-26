@@ -7,32 +7,37 @@ This repository is to demonstrate headless testing with Chrome in headless cloud
 * Ability to send additional http request headers (e.g X-Forwarded-For) to server from browser using Browser Mob Proxy
 * Ability to test application on non-localhost domains (e.g local.example.com) on SSL with Self Signed certificate using headless mode
 
-## Avoiding Xvfb
-
-In lot of examples, Xvfb (Virtual Frame Buffer) was used as a solution for web driver based tests running in headless CI server. However, when running large number of tests (typically 600+) for an enterprise application, Xvfb crashed during the test run. This happened frequently, even after setting DBUS_SESSION_BUS_ADDRESS=/dev/null. As a result the build was red due to single failure and the build become flaky. After using the Chrome in native headless mode (--headless), the build became reliable and never failed for wrong reasons.
-
-## Classification of headless testing
-Headless testing with chrome can be classified into following categories as listed below. Based on the test category, test setup needs additional web driver configurations and tools (like proxies). This demo repository contains code that covers all these categories.
-
-#### Simple
-Testing the application on localhost on http or https (using self signed certificate)
-
-#### Medium
-Testing the application on localhost which needs additional http request headers (like X-Forwared-For) to extract additional information from headers injected by load balancer. These headers can setup using Browser Mob Proxy (open source library) which can act as an proxy for Chrome browser.
-
-#### Complex
-Testing the application on non-localhost domains like local.example.com with self-signed certificate and need to send additional http request headers. These are extreme type of tests for an application which:
-* contains domain aware functionalities
-* deals with secure cookies
-* extracts information from request headers injected by load balancers
-
-
-
 ## Headless Travis CI Build status
 [![Build Status](https://travis-ci.org/harishkannarao/ChromeHeadlessTesting.svg?branch=master)](https://travis-ci.org/harishkannarao/ChromeHeadlessTesting)
 
 [Headless Travis CI configuration file](https://github.com/harishkannarao/ChromeHeadlessTesting/blob/master/.travis.yml)
 
+
+
+## Avoiding Xvfb
+
+In lot of examples, Xvfb (Virtual Frame Buffer) was used as a solution for web driver based tests running in headless CI server. However, when running large number of tests (typically 600+) for an enterprise application, Xvfb crashed during the test run. This happened frequently, even after setting DBUS_SESSION_BUS_ADDRESS=/dev/null. As a result the build was red due to single failure and the build become flaky. After using the Chrome in native headless mode (--headless), the build became reliable and never failed for wrong reasons.
+
+
+## Classification of setup needed for headless testing
+Headless testing with chrome can be classified into following categories as listed below. Based on the test category, test setup needs additional web driver configurations and tools (like proxies). This demo repository contains code that covers all these categories.
+
+#### Simple setup
+Testing the application on localhost on http or https (using self signed certificate). This just needs `--allow-insecure-localhost` command line argument in chrome driver configuration
+
+#### Medium setup
+Testing the application on localhost which needs additional http request headers (like X-Forwared-For) to extract additional information from headers injected by load balancer. These headers can setup using Browser Mob Proxy (open source library) which can act as an proxy for Chrome browser. This needs `--allow-insecure-localhost` command line argument and setting the proxy in chrome driver configuration
+
+#### Complex setup
+Testing the application on non-localhost domains like local.example.com with self-signed certificate and need to send additional http request headers. These are extreme type of tests for an application which:
+* contains domain aware functionalities
+* deals with secure cookies
+* extracts information from request headers injected by load balancers
+
+This needs all of the following:
+* set up browser mob proxy with the same self-signed certificate as the application uses
+* set up browser mob proxy as proxy in chrome driver configuration
+* import the self signed certificate in the operating system certificate store, so that Chrome browser will trust the certificate
 
 
 ## Required Software and Tools
@@ -96,7 +101,7 @@ And open the JasmineSpec runner url in a browser
 
 
     
-## Override location or pass the path of browser and chromedriver
+## Pass the path of browser and chromedriver
 
 The following command allows you to specify the installation location if the browser and / or chromedriver is not availabe in PATH of your Operating System. This is particularly convenient in CI environments
     
