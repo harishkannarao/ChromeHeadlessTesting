@@ -2,21 +2,53 @@
 
 This repository is to demonstrate headless testing with Chrome in headless cloud CI servers. This source code demonstrates the following key features with Chrome / Chromium:
 
-* Ability to toggle between headless mode (useful for CI) and non-headless mode (useful for development machine) using system property
-* Ability to automatically capture screenshot on test completion (on success or failure), which helps to debug test failures on remote CI servers
-* Ability to send additional http request headers (e.g X-Forwarded-For) to server from browser using Browser Mob Proxy
-* Ability to test application on non-localhost domains (e.g local.example.com) on SSL with Self Signed certificate using headless mode
+#### Toggle headless or normal mode
+
+It will be handy to run the tests in Chrome as normal mode in local development machine and see what's going on in the page as we develop new features.  However, for headless CI servers, the tests should be able to run in headless mode. `chromeHeadless` system property is used to toggle between two modes. Headless mode can be acitivated by setting `-DchromeHeadless=true` in IDE or build tool, otherwise the tests will run in normal mode
+
+**Example code:**
+
+[WebDriverFactory.java](https://github.com/harishkannarao/ChromeHeadlessTesting/blob/master/TestCommon/src/test/java/com/harishkannarao/demo/test_common/webdriver/WebDriverFactory.java)
+
+#### Avoiding Xvfb
+
+In lot of examples, Xvfb (Virtual Frame Buffer) was used as a solution for web driver based tests running in headless CI server. However, when running large number of tests (typically 600+) for an enterprise application, Xvfb crashed during the test run. This happened frequently, even after setting DBUS_SESSION_BUS_ADDRESS=/dev/null. As a result the build was red due to single failure and the build become flaky. After using the Chrome in native headless mode (--headless), the build became reliable and never failed for wrong reasons.
+
+#### Browser Mob Proxy
+
+Chrome WebDriver doesn't support adding or manipulating additional request headers while navigating to a page. This feature is useful in many situations to test an application which relies on request headers injected by load balancers. Hence, we can make use of Browser Mob Proxy library which acts as an Http and Https proxy for Chrome Browser and also allows the test to manipulate the request headers.
+
+**Example code:**
+
+[WebDriverTestConfigurations.java](https://github.com/harishkannarao/ChromeHeadlessTesting/blob/master/IntegrationTests/src/test/java/com/harishkannarao/demo/configuration/WebDriverTestConfigurations.java)
+
+[CustomHeaderPageIT.java](https://github.com/harishkannarao/ChromeHeadlessTesting/blob/master/IntegrationTests/src/test/java/com/harishkannarao/demo/CustomHeaderPageIT.java)
+
+#### Testing application through non-localhost domain with self-signed SSL
+
+This is the most extreme case of headless testing with Chrome. Chrome will not load the page if the certificate is invalid (not trusted or the domain name is not part of Subject Alternative Name field) in the certificate. To deal with these cases, we have do some complex setup. Please read towards the end of this page which covers in detail about testing an application with non-localhost domains with self-signed certificates.
+
+#### Capturing screenshots
+
+For developers or QAs to debug a test failure which uses WebDriver, tests reports alone as not sufficient to understand what's going on. Hence, it will handy to capture the screenshot of the final state of the WebDriver before test completion. This will give a clue on what was display on the browser, which in turn caused a test to fail. We can make use of `TestWatcher` rule available in JUnit framework to capture screenshots on test completion and save the image with name of the test itself.
+
+**Example code:**
+
+[AbstractBaseIT.java](https://github.com/harishkannarao/ChromeHeadlessTesting/blob/master/IntegrationTests/src/test/java/com/harishkannarao/demo/AbstractBaseIT.java)
+
+**Location of screenshots:**
+
+The screenshots will be located in one of the following location based on whether the test run through Maven, Gradle or IntelliJ IDEA
+
+* IntegrationTests/target/webdriver_screenshots
+* IntegrationTests/build/webdriver_screenshots
+* IntegrationTests/out/webdriver_screenshots
+
 
 ## Headless Travis CI Build status
 [![Build Status](https://travis-ci.org/harishkannarao/ChromeHeadlessTesting.svg?branch=master)](https://travis-ci.org/harishkannarao/ChromeHeadlessTesting)
 
 [Headless Travis CI configuration file](https://github.com/harishkannarao/ChromeHeadlessTesting/blob/master/.travis.yml)
-
-
-
-## Avoiding Xvfb
-
-In lot of examples, Xvfb (Virtual Frame Buffer) was used as a solution for web driver based tests running in headless CI server. However, when running large number of tests (typically 600+) for an enterprise application, Xvfb crashed during the test run. This happened frequently, even after setting DBUS_SESSION_BUS_ADDRESS=/dev/null. As a result the build was red due to single failure and the build become flaky. After using the Chrome in native headless mode (--headless), the build became reliable and never failed for wrong reasons.
 
 
 ## Classification of setup needed for headless testing
@@ -38,6 +70,7 @@ This needs all of the following:
 * set up browser mob proxy with the same self-signed certificate as the application uses
 * set up browser mob proxy as proxy in chrome driver configuration
 * import the self signed certificate in the operating system certificate store, so that Chrome browser will trust the certificate
+* the self signed certificate should contain the domain used for testing under Subject Alternative Name attribute
 
 
 ## Required Softwares, Tools and Version
