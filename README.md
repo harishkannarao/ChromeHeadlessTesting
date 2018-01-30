@@ -40,24 +40,24 @@ This needs all of the following:
 * import the self signed certificate in the operating system certificate store, so that Chrome browser will trust the certificate
 
 
-## Required Software and Tools
-* Java Version: Oracle Java 1.8.0_144
+## Required Softwares, Tools and Version
+* Java JDK Version: Oracle Java 1.8.0_144
 * Apache Maven Version: 3.3.9
 * Gradle Version: 4.4.1
 * Chrome (Windows & Mac OS) Browser / Chromium (Linux OS) Browser: 62
 * chromedriver: 2.32 [chromedriver installation steps](http://harish-kannarao.blogspot.co.uk/2018/01/installing-chromedriver-for-selenium.html)
 * Git Client: Any latest version
-* Integrated Development Environment: Any version IntelliJ Idea or Eclipse
+* Integrated Development Environment: Any version of IntelliJ Idea or Eclipse
 
 
 
 ## Running the build
 
+Note: For gradle users on Windows, please use **gradlew.bat** instead of **./gradlew** in the following commands
+
 #### Full Build (non headless mode)
 
 The following command generates artifacts, executes java unit tests, javascript unit tests and integration tests.
-
-chromedriver should be available in PATH of your Operation System.
 
 ###### For Maven users
 
@@ -167,8 +167,13 @@ Add the following lines in the respective file
 
     127.0.0.1   local.example.com
     127.0.0.1   local.example.org
+
+Please refer to the following link for more information about additional dns entries in your host file
+
+[Add additional dns host entry](https://harish-kannarao.blogspot.co.uk/2018/01/how-to-add-additional-routes-mapping-to.html)
+
     
-#### Command to run non-localhost tests on Ssl
+#### Command to run non-localhost tests
 
 ###### For Maven users
 
@@ -177,3 +182,27 @@ Add the following lines in the respective file
 ###### For Gradle users
 
     ./gradlew clean build -DrunNonLocalHostTests=true
+    
+
+#### Command to run non-localhost tests in headless mode
+
+To run non-localhost tests in headless mode, we need to import the self signed certificate and mark it as trusted certificate in the Operating System's Trust Store.
+
+Otherwise Chrome / Chromium will not load the pages under headless mode.
+
+Commands to import the self signed certificate used by the SampleApplication has been captured in the travis-ci.yml file. Hence the build is green in Travis CI Build.
+
+For development machine, please import **SampleApplication/src/main/resources/keystore.p12** with password **my_keystore_password**.
+
+The following links explains how to import .p12 file in various operating systems:
+* For Mac: [Import .p12 file in Mac](https://harish-kannarao.blogspot.co.uk/2018/01/import-personal-information-exchange.html)
+* For Windows: [Import .p12 file in Windows](https://support.quovadisglobal.com/kb/a66/how-do-i-install-a-digital-certificate-onto-windows-7.aspx)
+* For Linux: [Import .p12 file in Linux](https://harish-kannarao.blogspot.co.uk/2017/12/import-self-signed-in-linux-for-chrome.html) 
+
+###### For Maven users
+
+    mvn clean install -DrunNonLocalHostTests=true -DchromeHeadless=true
+    
+###### For Gradle users
+
+    ./gradlew clean build -DrunNonLocalHostTests=true -DchromeHeadless=true
