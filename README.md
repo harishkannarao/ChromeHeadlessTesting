@@ -38,7 +38,7 @@ For developers or QAs to debug a test failure which uses WebDriver, tests report
 
 **Location of screenshots:**
 
-The screenshots will be located in one of the following location based on whether the test run through Maven, Gradle or IntelliJ IDEA
+The screenshots will be located in one of the following location based on whether the test is run through Maven, Gradle or IntelliJ IDEA
 
 * IntegrationTests/target/webdriver_screenshots
 * IntegrationTests/build/webdriver_screenshots
