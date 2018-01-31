@@ -1,6 +1,6 @@
 # Chrome Headless Testing
 
-This repository is to demonstrate headless testing with Chrome in headless cloud CI servers. This source code demonstrates the following key features with Chrome / Chromium:
+This repository is to demonstrate headless testing with Chrome in headless cloud CI servers. Spring boot and dependency injection is used in this repository, still the code can be ported to projects using no frameworks or other frameworks. This source code demonstrates the following key features with Chrome / Chromium:
 
 ## Toggle headless or normal mode
 
