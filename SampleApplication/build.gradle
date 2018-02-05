@@ -15,7 +15,7 @@ bootRun {
 
 jar {
     baseName = 'sample-application'
-    version =  '1.0-SNAPSHOT'
+    version =  "$appVersion"
 }
 
 dependencies {
