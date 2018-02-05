@@ -4,6 +4,8 @@ buildscript {
 
 apply plugin: 'org.springframework.boot'
 
+ext['selenium.version']="$seleniumVersion"
+
 bootRepackage {
     executable = true
     classifier = 'exec'

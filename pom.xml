@@ -22,7 +22,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring.boot.version>1.5.9.RELEASE</spring.boot.version>
-        <selenium.version>2.53.1</selenium.version>
+        <selenium.version>3.8.1</selenium.version>
         <angularjs.version>1.4.1</angularjs.version>
         <jasmine.version>2.5.1</jasmine.version>
         <commons.io.version>2.6</commons.io.version>
