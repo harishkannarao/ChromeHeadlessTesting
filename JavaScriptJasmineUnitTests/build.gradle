@@ -4,7 +4,25 @@ buildscript {
 
 apply plugin: 'org.springframework.boot'
 
+/*
+'selenium.version' properties is used by Spring Boot Dependency Management plugin.
+Unless we set the version to be used by the project, Spring Boot forces it's own version.
+Execute 'printSpringBootProperties' to get the list of properties used by Spring Boot.
+Execute 'printSpringBootManagedVersions' to get the list of libraries managed by Spring Boot.
+ */
 ext['selenium.version']="$seleniumVersion"
+
+task('printSpringBootProperties') {
+    doFirst {
+        dependencyManagement.importedProperties.each { k, v -> println "${k}:${v}" }
+    }
+}
+
+task('printSpringBootManagedVersions') {
+    doFirst {
+        dependencyManagement.managedVersions.each { k, v -> println "${k}:${v}" }
+    }
+}
 
 bootRepackage {
     executable = true
