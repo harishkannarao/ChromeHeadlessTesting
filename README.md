@@ -78,7 +78,7 @@ This needs all of the following:
 * Apache Maven Version: 3.3.9
 * Gradle Version: 4.4.1
 * Chrome (Windows & Mac OS) Browser / Chromium (Linux OS) Browser: 62
-* chromedriver: 2.32 [chromedriver installation steps](http://harish-kannarao.blogspot.co.uk/2018/01/installing-chromedriver-for-selenium.html)
+* chromedriver: 2.32 [chromedriver installation steps](https://blogs.harishkannarao.com/2018/01/installing-chromedriver-for-selenium.html)
 * Git Client: Any latest version
 * Integrated Development Environment: Any version of IntelliJ Idea or Eclipse
 
@@ -203,7 +203,7 @@ Add the following lines in the respective file
 
 Please refer to the following link for more information about additional dns entries in your host file
 
-[Add additional dns host entry](https://harish-kannarao.blogspot.co.uk/2018/01/how-to-add-additional-routes-mapping-to.html)
+[Add additional dns host entry](https://blogs.harishkannarao.com/2018/01/how-to-add-additional-routes-mapping-to.html)
 
     
 #### Command to run non-localhost tests
@@ -228,9 +228,9 @@ Commands to import the self signed certificate used by the SampleApplication has
 For development machine, please import **SampleApplication/src/main/resources/keystore.p12** with password **my_keystore_password**.
 
 The following links explains how to import .p12 file in various operating systems:
-* For Mac: [Import .p12 file in Mac](https://harish-kannarao.blogspot.co.uk/2018/01/import-personal-information-exchange.html)
+* For Mac: [Import .p12 file in Mac](https://blogs.harishkannarao.com/2018/01/import-personal-information-exchange.html)
 * For Windows: [Import .p12 file in Windows](https://support.quovadisglobal.com/kb/a66/how-do-i-install-a-digital-certificate-onto-windows-7.aspx)
-* For Linux: [Import .p12 file in Linux](https://harish-kannarao.blogspot.co.uk/2017/12/import-self-signed-in-linux-for-chrome.html) 
+* For Linux: [Import .p12 file in Linux](https://blogs.harishkannarao.com/2017/12/import-self-signed-in-linux-for-chrome.html) 
 
 ###### For Maven users
 
