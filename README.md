@@ -74,7 +74,7 @@ This needs all of the following:
 
 
 ## Required Softwares, Tools and Version
-* Java JDK Version: Oracle Java 1.8.0_144
+* Java JDK Version: 9
 * Apache Maven Version: 3.3.9
 * Gradle Version: 4.4.1
 * Chrome (Windows & Mac OS) Browser / Chromium (Linux OS) Browser: 62
