@@ -24,16 +24,17 @@ task('printSpringBootManagedVersions') {
     }
 }
 
-bootRepackage {
-    executable = true
-    classifier = 'exec'
+bootJar {
+    baseName = 'java-script-jasmine-unit-tests'
+    classifier = "$appVersion-exec"
 }
 
 bootRun {
-    addResources = true
+    sourceResources sourceSets.main
 }
 
 jar {
+    enabled = true
     baseName = 'java-script-jasmine-unit-tests'
     version =  "$appVersion"
 }

@@ -4,16 +4,17 @@ buildscript {
 
 apply plugin: 'org.springframework.boot'
 
-bootRepackage {
-    executable = true
-    classifier = 'exec'
+bootJar {
+    baseName = 'sample-application'
+    classifier = "$appVersion-exec"
 }
 
 bootRun {
-    addResources = true
+    sourceResources sourceSets.main
 }
 
 jar {
+    enabled = true
     baseName = 'sample-application'
     version =  "$appVersion"
 }
