@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,7 +39,7 @@ public class WebDriverFactory {
     }
 
     private WebDriver createChromeWebDriver() {
-        WebDriver webDriver = new ChromeDriver(chromeDriverService, getDefaultDesiredCapabilities());
+        WebDriver webDriver = new ChromeDriver(chromeDriverService, getDefaultChromeOptions());
         webDriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.MINUTES);
         return webDriver;
     }
@@ -83,7 +81,7 @@ public class WebDriverFactory {
         }
     }
 
-    private DesiredCapabilities getDefaultDesiredCapabilities() {
+    private ChromeOptions getDefaultChromeOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
         List<String> arguments = new ArrayList<>();
         arguments.add("--allow-insecure-localhost");
@@ -98,14 +96,11 @@ public class WebDriverFactory {
         Optional<String> chromeBinary = Optional.ofNullable(System.getProperty("chromeBinary"));
         chromeBinary.ifPresent(chromeOptions::setBinary);
 
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-
         if (proxy != null) {
-            capabilities.setCapability(CapabilityType.PROXY, proxy);
+            chromeOptions.setProxy(proxy);
         }
 
-        return capabilities;
+        return chromeOptions;
     }
 
     private ChromeDriverService createChromeDriverService() {
