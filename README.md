@@ -76,7 +76,7 @@ This needs all of the following:
 ## Required Softwares, Tools and Version
 * Java JDK Version: 9
 * Apache Maven Version: 3.3.9
-* Gradle Version: 4.4.1
+* Gradle Version: 4.6
 * Chrome (Windows & Mac OS) Browser / Chromium (Linux OS) Browser: 62
 * chromedriver: 2.32 [chromedriver installation steps](https://blogs.harishkannarao.com/2018/01/installing-chromedriver-for-selenium.html)
 * Git Client: Any latest version
