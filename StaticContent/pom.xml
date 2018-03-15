@@ -14,4 +14,39 @@
     <packaging>jar</packaging>
     <name>StaticContent</name>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <addResources>true</addResources>
+                    <executable>true</executable>
+                    <classifier>exec</classifier>
+                    <useTestClasspath>true</useTestClasspath>
+                    <mainClass>com.harishkannarao.demo.jasmine_tests_application.JasmineUnitTestsApplication</mainClass>
+                    <folders>
+                        <folder>${project.build.testOutputDirectory}</folder>
+                    </folders>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>jasmine</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.harishkannarao.demo</groupId>
+            <artifactId>test-common</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
 </project>

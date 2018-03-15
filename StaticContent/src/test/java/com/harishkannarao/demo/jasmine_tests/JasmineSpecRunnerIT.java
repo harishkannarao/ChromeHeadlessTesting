@@ -1,5 +1,6 @@
 package com.harishkannarao.demo.jasmine_tests;
 
+import com.harishkannarao.demo.jasmine_tests_application.JasmineUnitTestsApplication;
 import com.harishkannarao.demo.test_common.webdriver.WebDriverFactory;
 import org.junit.After;
 import org.junit.Test;

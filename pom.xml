@@ -15,7 +15,6 @@
         <module>SampleApplication</module>
         <module>TestCommon</module>
         <module>UnitTests</module>
-        <module>JavaScriptJasmineUnitTests</module>
         <module>IntegrationTests</module>
     </modules>
 

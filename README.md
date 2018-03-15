@@ -122,11 +122,16 @@ To run the java script unit tests in standalone mode, start the JasmineSpec runn
 
 ###### For Maven users
 
-    mvn spring-boot:run -pl JavaScriptJasmineUnitTests 
+    mvn spring-boot:run -pl StaticContent 
     
 ###### For Gradle users
      
-    ./gradlew :JavaScriptJasmineUnitTests:bootRun
+    ./gradlew :StaticContent:bootRun
+    
+###### For IntelliJ IDE users
+If you want to do TDD for JavaScript code, then run the following class `com.harishkannarao.demo.jasmine_tests_application.JasmineUnitTestsApplication` in the `StaticContent/src/test/java` directory as a java application. 
+
+After making changes to source javascript or spec javascript, build the project `Build -> Build Project` or `Ctrl + F9` or `Cmd+F9` and refresh the browser
     
 And open the JasmineSpec runner url in a browser
 

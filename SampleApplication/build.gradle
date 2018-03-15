@@ -6,7 +6,8 @@ apply plugin: 'org.springframework.boot'
 
 bootJar {
     baseName = 'sample-application'
-    classifier = "$appVersion-exec"
+    classifier = "exec"
+    version =  "$appVersion"
 }
 
 bootRun {
