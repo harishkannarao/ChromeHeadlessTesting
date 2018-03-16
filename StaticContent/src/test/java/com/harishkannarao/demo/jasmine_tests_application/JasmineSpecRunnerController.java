@@ -28,7 +28,7 @@ public class JasmineSpecRunnerController {
         this.resourceLoader = resourceLoader;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView redirectJasmineSpecRunner() {
         return new ModelAndView(new RedirectView(JASMINE_SPEC_RUNNER));
     }

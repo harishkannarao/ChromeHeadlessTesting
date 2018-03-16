@@ -163,12 +163,9 @@ The following command allows you to specify the installation location if the bro
     
     ./gradlew :SampleApplication:bootRun
     
-###### Urls
+###### Application url
 
-    https://localhost:8080/app/index.html
-    https://localhost:8080/thymeleafAngularDemo
-    https://localhost:8080/showCustomHeader
-    https://localhost:8080/viewCookie
+    https://localhost:8080
 
 
    
