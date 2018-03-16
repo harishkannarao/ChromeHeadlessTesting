@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <title>Jasmine Spec Runner</title>
@@ -14,16 +14,9 @@
     <script src="/webjars/angularjs/1.4.1/angular-route.js"></script>
     <script src="/webjars/angularjs/1.4.1/angular-resource.js"></script>
     <script src="/webjars/angularjs/1.4.1/angular-mocks.js"></script>
-
-    <!-- include source files here... -->
-    <script src="/js/custom/app.js"></script>
-    <script src="/js/custom/controllers.js"></script>
-    <script src="/js/custom/thymeleaf-angular-controllers.js"></script>
-
-    <!-- include spec files here... -->
-    <script src="/spec/controllersSpec.js"></script>
-    <script src="/spec/thymeleafAngularControllersSpec.js"></script>
 </head>
 <body>
+    <script th:each="source : ${sources}" th:src="${source}"></script>
+    <script th:each="spec : ${specs}" th:src="${spec}"></script>
 </body>
 </html>

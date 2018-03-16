@@ -17,7 +17,7 @@ public class JasmineSpecRunnerPage {
     }
 
     public void navigate() {
-        webDriver.navigate().to("http://localhost:9090/JasmineSpecRunner.html");
+        webDriver.navigate().to("http://localhost:9090");
     }
 
     public void assertNoFailures() {

@@ -135,7 +135,7 @@ After making changes to source javascript or spec javascript, build the project 
     
 And open the JasmineSpec runner url in a browser
 
-**http://localhost:9090/JasmineSpecRunner.html** 
+**http://localhost:9090** 
 
 
     

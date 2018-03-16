@@ -26,12 +26,12 @@ public class JasmineSpecRunnerIT {
     private WebDriverFactory webDriverFactory;
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         webDriverFactory.closeAllWebDrivers();
     }
 
     @Test
-    public void shouldRunJasmineSpecs() throws Exception {
+    public void shouldRunJasmineSpecs() {
         WebDriver webDriver = webDriverFactory.newWebDriver();
 
         JasmineSpecRunnerPage specRunnerPage = new JasmineSpecRunnerPage(webDriver);
