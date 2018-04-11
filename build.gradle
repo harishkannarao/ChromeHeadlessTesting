@@ -38,7 +38,9 @@ allprojects {
     }
 
     test {
-        systemProperties(System.getProperties())
+        systemProperties = System.properties.stringPropertyNames().collectEntries {
+            [(it): System.getProperty(it)]
+        }
     }
 }
 
