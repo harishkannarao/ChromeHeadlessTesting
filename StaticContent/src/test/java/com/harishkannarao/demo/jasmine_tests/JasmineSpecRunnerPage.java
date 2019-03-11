@@ -21,6 +21,10 @@ public class JasmineSpecRunnerPage {
     }
 
     public void assertNoFailures() {
+        List<WebElement> jasmineAlerts = webDriver.findElements(By.className("jasmine-skipped"));
+        boolean noSpecsFound = jasmineAlerts.stream().anyMatch(webElement -> webElement.getText().contains("No specs found"));
+        Assert.assertFalse("No Jasmine Specs Found", noSpecsFound);
+
         WebElement failures = webDriver.findElement(By.className("jasmine-failures"));
 
         List<WebElement> failedSpecs = failures.findElements(By.className("jasmine-failed"));
